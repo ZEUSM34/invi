@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Mis XV Años · Jennifer Aracely Pérez Ek</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Marcellus+SC&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --clr-cream:#FBE7E0;
+    --clr-paper:#FFFCF9;
+    --clr-blush:#E9C7BA;
+    --clr-blush-dark:#D3A190;
+    --clr-wine:#6E3A31;
+    --clr-wine-soft:#8C5347;
+    --clr-gold:#B8873D;
+    --clr-gold-light:#D9B672;
+    --clr-line: rgba(184,135,61,0.45);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:linear-gradient(180deg, #FFF7F2 0%, #FBE3D9 100%);
+    background-attachment:fixed;
+    font-family:'Cormorant Garamond', serif;
+    color:var(--clr-wine);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{margin:0;}
+  .script{font-family:'Alex Brush', cursive;}
+  .caps{font-family:'Marcellus SC', serif; letter-spacing:0.12em;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  .corner-flor{position:absolute; width:150px; height:auto; opacity:0.95; pointer-events:none;}
+  .corner-flor.tl{top:-10px; left:-16px; transform:rotate(0deg);}
+  .corner-flor.tr{top:-10px; right:-16px; transform:scaleX(-1);}
+  .corner-flor.bl{bottom:-10px; left:-16px; transform:scaleY(-1);}
+  .corner-flor.br{bottom:-10px; right:-16px; transform:scale(-1,-1);}
+
+  #envelope-screen{
+    position:fixed; inset:0; z-index:50;
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+    background:
+      radial-gradient(ellipse at 50% 0%, #fff8f2 0%, var(--clr-cream) 60%);
+    padding:34px 20px 20px;
+    transition:opacity .7s ease, visibility .7s ease;
+    text-align:center;
+    overflow:hidden;
+  }
+  #envelope-screen.hidden{opacity:0; visibility:hidden; pointer-events:none;}
+
+  .crown{width:78px; margin:8px auto 6px;}
+  .titulo-xv{font-size:1.5rem; color:var(--clr-wine-soft); margin-top:6px;}
+  .nombre-hero{font-size:2.6rem; color:var(--clr-gold); line-height:1.1; margin-top:4px;}
+
+  .envelope-wrap{
+    margin-top:34px;
+    position:relative;
+    width:250px; height:180px;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .env-shadow{
+    position:absolute; bottom:-14px; left:10%; width:80%; height:16px;
+    background:radial-gradient(ellipse, rgba(110,58,49,0.25), transparent 70%);
+  }
+  .env-body{
+    position:absolute; inset:0;
+    background:linear-gradient(160deg, var(--clr-blush), var(--clr-blush-dark));
+    border-radius:10px;
+    box-shadow:0 14px 30px -12px rgba(110,58,49,0.45);
+    overflow:hidden;
+  }
+  .env-flap{
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    background:linear-gradient(160deg, #EFD2C6, var(--clr-blush));
+    clip-path:polygon(0 0, 100% 0, 50% 58%);
+    transform-origin:top center;
+    transition:transform .9s cubic-bezier(.6,-0.2,.3,1.3);
+    z-index:3;
+  }
+  .env-flower{
+    position:absolute; top:38%; left:50%; transform:translate(-50%,-50%);
+    width:56px; z-index:1; opacity:0.9;
+  }
+  .seal{
+    position:absolute; top:52%; left:50%; transform:translate(-50%,-50%);
+    width:54px; height:54px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--clr-gold-light), var(--clr-gold) 70%, #8a641f 100%);
+    box-shadow:0 4px 10px rgba(0,0,0,0.25), inset 0 0 0 2px rgba(255,255,255,0.15);
+    display:flex; align-items:center; justify-content:center;
+    z-index:4;
+    transition:transform .5s ease, opacity .5s ease;
+  }
+  .seal svg{width:26px; height:26px; fill:#fff8ea; opacity:0.9;}
+  .sparkle{
+    position:absolute; width:10px; height:10px; z-index:5;
+    background:radial-gradient(circle, #fff 0%, transparent 70%);
+    border-radius:50%; opacity:0.9;
+  }
+  .sp1{top:30%; left:62%;} .sp2{top:44%; left:70%; width:6px;height:6px;} .sp3{top:24%; left:56%; width:6px;height:6px;}
+
+  .tocar-txt{
+    margin-top:22px; font-size:1.2rem; font-style:italic; color:var(--clr-wine-soft);
+    letter-spacing:0.04em;
+  }
+  .tocar-txt::after{
+    content:''; display:block; width:0; height:1px; background:var(--clr-gold);
+    margin:6px auto 0; animation:pulseline 2.6s ease-in-out infinite;
+  }
+  @keyframes pulseline{ 0%,100%{width:0; opacity:0;} 50%{width:60px; opacity:1;} }
+
+  .envelope-wrap.opening .env-flap{transform:rotateX(180deg); box-shadow:0 -6px 10px rgba(0,0,0,0.08);}
+  .envelope-wrap.opening .seal{transform:translate(-50%,-50%) scale(0);}
+  .envelope-wrap.opening .env-body{animation:envPop .5s ease .55s both;}
+  @keyframes envPop{
+    0%{transform:scale(1);}
+    40%{transform:scale(1.06) translateY(-10px);}
+    100%{transform:scale(1.02) translateY(-6px);}
+  }
+
+  #invitacion{
+    position:relative; max-width:480px; margin:0 auto;
+    background:var(--clr-cream);
+    opacity:0; transform:translateY(18px);
+    transition:opacity .8s ease .1s, transform .8s ease .1s;
+  }
+  #invitacion.show{opacity:1; transform:translateY(0);}
+
+  .seccion{
+    position:relative; padding:70px 30px 60px; text-align:center;
+    overflow:hidden;
+  }
+  .divider{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    color:var(--clr-gold); margin:22px 0;
+  }
+  .divider::before, .divider::after{content:''; height:1px; width:46px; background:var(--clr-line);}
+
+  .hero-inv .crown{width:70px;}
+  .hero-inv .aro{
+    position:relative; width:220px; height:220px; margin:18px auto 0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+  }
+  .aro svg{position:absolute; inset:0; width:100%; height:100%;}
+  .aro-img{position:absolute; inset:0; width:100%; height:100%; object-fit:contain;}
+  .aro-corona{position:absolute; top:50%; left:50%; width:60px; transform:translate(-50%,-50%); z-index:1;}
+  .aro .xv{font-size:2.6rem; color:var(--clr-gold); font-family:'Marcellus SC',serif; letter-spacing:0.05em;}
+  .aro .mis{position:relative; font-size:0.95rem; color:var(--clr-wine-soft); letter-spacing:0.3em; margin-bottom:6px; z-index:1;}
+  .aro .anos{position:relative; font-size:0.95rem; color:var(--clr-wine-soft); letter-spacing:0.3em; margin-top:6px; z-index:1;}
+  .mariposas-aro{
+    position:absolute; top:50%; left:-55px; width:75px; transform:translateY(-50%);
+    z-index:1; pointer-events:none;
+  }
+  .aro-corona-top{
+    position:absolute; top:-18px; left:50%; transform:translateX(-50%);
+    width:65px; z-index:2; pointer-events:none;
+  }
+  .silueta{width:150px; margin:6px auto -10px;}
+  .mariposas-despedida{
+    position:absolute; top:18%; left:10%; width:85px; z-index:1; pointer-events:none;
+  }
+
+  .frase{font-size:1.18rem; line-height:1.55; font-style:italic; color:var(--clr-wine-soft); max-width:340px; margin:18px auto 0;}
+
+  .music-bar{max-width:320px; margin:26px auto 0;}
+  .music-track{height:2px; background:var(--clr-line); border-radius:2px; position:relative; margin-bottom:14px;}
+  .music-track .dot{position:absolute; left:4%; top:50%; width:8px; height:8px; background:var(--clr-gold); border-radius:50%; transform:translateY(-50%);}
+  .music-controls{display:flex; align-items:center; justify-content:center; gap:26px;}
+  .music-controls button{background:none; border:none; cursor:pointer; color:var(--clr-wine); padding:4px;}
+  .play-btn{
+    width:52px; height:52px; border-radius:50%; background:var(--clr-wine);
+    display:flex; align-items:center; justify-content:center; color:#fff;
+  }
+  .music-note{font-size:0.85rem; color:var(--clr-blush-dark); margin-top:10px;}
+
+  .padres-nombre{font-size:1.5rem; margin:14px 0; color:var(--clr-wine);}
+  .padres-y{font-size:1.05rem; color:var(--clr-gold); margin:2px 0;}
+  .honor-txt{max-width:320px; margin:20px auto 0; font-size:1.1rem; line-height:1.5;}
+
+  .placa{
+    margin:30px auto 0; padding:34px 18px; max-width:300px;
+    border:2px solid var(--clr-gold); border-radius:6px 6px 40px 40px;
+    position:relative;
+  }
+  .placa::before, .placa::after{
+    content:''; position:absolute; width:22px; height:22px; border:2px solid var(--clr-gold);
+  }
+  .placa::before{top:-2px; left:-2px; border-right:none; border-bottom:none; border-top-left-radius:6px;}
+  .placa::after{top:-2px; right:-2px; border-left:none; border-bottom:none; border-top-right-radius:6px;}
+  .placa .nombre{font-size:2.1rem; color:var(--clr-gold);}
+  .placa-flor{
+    position:absolute; top:-32px; left:50%; transform:translateX(-50%);
+    width:150px; z-index:2; pointer-events:none;
+  }
+  .placa-hojas{
+    position:absolute; top:-45px; left:50%; transform:translateX(-50%);
+    width:380px; max-width:none; z-index:0; opacity:0.9; pointer-events:none;
+  }
+  .placa-nombre{position:relative; z-index:3;}
+
+  .fecha-wrap{margin-top:34px;}
+
+  .cuenta-regresiva{display:flex; justify-content:center; gap:14px; margin-top:26px;}
+  .cr-item{display:flex; flex-direction:column; align-items:center; min-width:52px;}
+  .cr-num{
+    font-size:1.7rem; font-weight:600; color:var(--clr-wine);
+    background:var(--clr-blush); border-radius:8px; padding:8px 6px; min-width:52px;
+  }
+  .cr-label{font-size:0.72rem; letter-spacing:0.08em; color:var(--clr-wine-soft); margin-top:5px; text-transform:uppercase;}
+
+  .mes{font-family:'Marcellus SC',serif; letter-spacing:0.28em; font-size:1rem; color:var(--clr-wine-soft);}
+  .fecha-linea{display:flex; align-items:center; justify-content:center; gap:16px; margin-top:6px;}
+  .fecha-linea .dia-txt, .fecha-linea .anio{font-size:1rem; letter-spacing:0.1em; border-bottom:1px solid var(--clr-line); padding-bottom:4px;}
+  .fecha-linea .dia-num{font-size:2.6rem; color:var(--clr-wine); font-weight:600;}
+
+  .arco{
+    max-width:280px; margin:36px auto 0; border:2px solid var(--clr-gold);
+    border-top-left-radius:140px; border-top-right-radius:140px;
+    padding:40px 22px 30px; position:relative;
+  }
+  .copas{width:60px; margin:0 auto 10px;}
+  .recep-h{font-size:1.5rem; color:var(--clr-wine-soft); margin-bottom:6px;}
+  .recep-hora{font-size:1.15rem;}
+  .btn-llegar{
+    display:inline-block; margin-top:18px; padding:11px 26px;
+    background:var(--clr-blush); color:var(--clr-wine); text-decoration:none;
+    border-radius:30px; font-size:0.95rem; letter-spacing:0.05em; border-bottom:2px solid var(--clr-gold);
+    transition:transform .2s ease;
+  }
+  .btn-llegar:active{transform:scale(0.96);}
+
+  .vest-icons{display:flex; justify-content:center; gap:34px; margin-top:20px;}
+  .vest-icons .icon-box{
+    width:64px; height:64px; border-radius:14px; background:var(--clr-wine-soft);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .vest-icons svg{width:32px; height:32px; fill:#fff;}
+  .vest-label{margin-top:16px; font-size:1.2rem; letter-spacing:0.06em; color:var(--clr-wine-soft);}
+
+  .sobre-icon{width:70px; margin:14px auto;}
+  .regalo-txt{max-width:300px; margin:0 auto; font-size:1.08rem; line-height:1.5;}
+
+  .confirmar-txt{max-width:300px; margin:16px auto 0; font-size:1.08rem; line-height:1.5;}
+  .btn-confirmar{
+    display:inline-block; margin-top:22px; padding:13px 40px;
+    background:var(--clr-blush); color:var(--clr-wine); text-decoration:none;
+    border-radius:30px; font-size:1rem; letter-spacing:0.06em; border-bottom:3px solid var(--clr-gold);
+    box-shadow:0 8px 18px -8px rgba(110,58,49,0.4);
+  }
+
+  .despedida{font-size:1.9rem; color:var(--clr-gold-light); margin-top:8px;}
+  footer.creditos{
+    text-align:center; padding:20px 0 34px; font-size:0.78rem; color:var(--clr-blush-dark);
+    letter-spacing:0.04em;
+  }
+
+  .fade-in{opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease;}
+  .fade-in.in-view{opacity:1; transform:translateY(0);}
+
+</style>
+</head>
+<body>
+
+<div id="envelope-screen">
+
+  <img class="corner-flor tl" src="rosas.webp" alt="">
+  <img class="corner-flor tr" src="rosas.webp" alt="">
+
+  <img class="crown" src="corona1.webp" alt="Corona">
+
+  <h2 class="caps titulo-xv">MIS XV AÑOS</h2>
+  <h1 class="script nombre-hero" id="nombre-hero-txt">Jennifer Aracely Pérez Ek</h1>
+
+  <div class="envelope-wrap" id="envelopeWrap" role="button" aria-label="Tocar el sobre para abrir la invitación" tabindex="0">
+    <div class="env-shadow"></div>
+    <div class="env-body">
+      <svg class="env-flower" viewBox="0 0 60 60" fill="none"><use href="#icon-florecitas"/></svg>
+    </div>
+    <div class="env-flap"></div>
+    <div class="sparkle sp1"></div><div class="sparkle sp2"></div><div class="sparkle sp3"></div>
+    <div class="seal">
+      <svg viewBox="0 0 24 24"><use href="#icon-corazon-sello"/></svg>
+    </div>
+  </div>
+
+  <p class="tocar-txt script" style="font-size:1.4rem;">Tocar el sobre</p>
+
+  <img class="corner-flor bl" src="rosas.webp" alt="">
+  <img class="corner-flor br" src="rosas.webp" alt="">
+</div>
+
+<div id="invitacion">
+
+  <section class="seccion hero-inv fade-in">
+    <img class="corner-flor tl" src="rosas.webp" alt="">
+    <img class="corner-flor tr" src="rosas.webp" alt="">
+    <div class="aro">
+      <img class="aro-img" src="circulo.webp" alt="">
+      <img class="aro-corona-top" src="coronado.png" alt="Corona">
+      <span class="mis caps">MIS</span>
+      <span class="xv">XV</span>
+      <span class="anos caps">AÑOS</span>
+      <img class="mariposas-aro" src="mariposas.gif" alt="">
+    </div>
+
+    <img class="silueta" src="quince.png" alt="">
+
+    <div class="divider"><span>♥</span></div>
+
+    <p class="frase" id="fraseTxt">Con la bendición de Dios y el amor que mi familia me ha dado, me siento feliz de llegar a este momento de mi vida; el día que dejaré atrás mi infancia y comenzaré un nuevo viaje.</p>
+
+    <div class="music-bar">
+      <p style="font-style:italic; font-size:1.02rem; color:var(--clr-wine-soft); margin-bottom:10px;">Carlos Rivera - Yo te esperaba</p>
+      <div class="music-track"><div class="dot"></div></div>
+      <div class="music-controls">
+        <button aria-label="aleatorio">⇄</button>
+        <button aria-label="anterior">◄</button>
+        <button class="play-btn" id="playBtn" aria-label="reproducir">
+          <svg id="iconPlay" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <button aria-label="siguiente">►</button>
+        <button aria-label="repetir">⇆</button>
+      </div>
+      <audio id="cancion" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </section>
+
+  <section class="seccion fade-in">
+    <img class="corner-flor tl" style="width:110px;" src="rosas.webp" alt="">
+    <p class="honor-txt">Porque son parte de mi vida es mi deseo que compartan conmigo la alegría de mis quince años.</p>
+    <div class="divider"><span>♥</span></div>
+    <h3 class="script" style="font-size:1.8rem; color:var(--clr-gold);">Mis Padres</h3>
+    <p class="padres-nombre script" id="papaTxt">Julio Cesar Pérez Mendez</p>
+    <p class="padres-y script">y</p>
+    <p class="padres-nombre script" id="mamaTxt">Angélica Brisana Ek Flores</p>
+    <p class="honor-txt">Tienen el honor de invitarlos a festejar los XV años de su hija.</p>
+  </section>
+
+  <section class="seccion fade-in" style="padding-top:20px;">
+    <div class="placa">
+      <img class="placa-hojas" src="ojas.gif" alt="">
+      <img class="placa-flor" src="rosas arriba.webp" alt="">
+      <p class="script nombre placa-nombre" id="nombrePlacaTxt">Jennifer Aracely Pérez Ek</p>
+    </div>
+  </section>
+
+  <section class="seccion fade-in" style="padding-top:10px;">
+    <div class="fecha-wrap">
+      <p class="mes" id="mesTxt">AGOSTO</p>
+      <div class="fecha-linea">
+        <span class="dia-txt caps" id="diaSemanaTxt">SÁBADO</span>
+        <span class="dia-num" id="diaNumTxt">22</span>
+        <span class="anio" id="anioTxt">2026</span>
+      </div>
+    </div>
+
+    <div class="cuenta-regresiva" id="cuentaRegresiva">
+      <div class="cr-item"><span class="cr-num" id="crDias">00</span><span class="cr-label">Días</span></div>
+      <div class="cr-item"><span class="cr-num" id="crHoras">00</span><span class="cr-label">Horas</span></div>
+      <div class="cr-item"><span class="cr-num" id="crMin">00</span><span class="cr-label">Min</span></div>
+      <div class="cr-item"><span class="cr-num" id="crSeg">00</span><span class="cr-label">Seg</span></div>
+    </div>
+
+    <div class="arco" style="margin-top:40px;">
+      <svg class="copas" viewBox="0 0 60 60" fill="none"><use href="#icon-copas"/></svg>
+      <h3 class="script recep-h">Recepción</h3>
+      <p class="recep-hora">Horario: <strong id="horaTxt">7:00 pm</strong></p>
+      <p class="recep-hora" id="lugarTxt" style="font-size:0.95rem; color:var(--clr-blush-dark);">Región 102 manzana 68 lote 10 calle 28</p>
+      <a class="btn-llegar" id="comoLlegarBtn" href="https://maps.app.goo.gl/ZCmGgqxEcptVPVej9" target="_blank" rel="noopener">CÓMO LLEGAR</a>
+    </div>
+  </section>
+
+  <section class="seccion fade-in">
+    <img class="corner-flor tr" style="width:120px;" src="rosas.webp" alt="">
+    <h3 class="script" style="font-size:1.8rem; color:var(--clr-gold);">Vestimenta</h3>
+    <div class="vest-icons">
+      <div class="icon-box"><svg viewBox="0 0 24 24"><use href="#icon-camisa"/></svg></div>
+      <div class="icon-box"><svg viewBox="0 0 24 24"><use href="#icon-vestido"/></svg></div>
+    </div>
+    <p class="vest-label caps">Formal</p>
+    <p class="vest-label caps">Se reserva el color rosa para la quinceañera</p>
+  </section>
+
+  <section class="seccion fade-in">
+    <h3 class="script" style="font-size:1.8rem; color:var(--clr-gold);">Mesa de Regalos</h3>
+    <svg class="sobre-icon" viewBox="0 0 80 60" fill="none"><use href="#icon-sobres"/></svg>
+    <p class="regalo-txt">Tu presencia es el mejor regalo. Si algo me deseas obsequiar, cualquier regalo sabre apreciar.</p>
+  </section>
+
+  <section class="seccion fade-in">
+    <img class="corner-flor bl" style="width:120px;" src="rosas.webp" alt="">
+    <h3 class="script" style="font-size:1.8rem; color:var(--clr-gold);">Confirmar tu asistencia</h3>
+    <p class="confirmar-txt">Te agradecemos que confirmes tu asistencia.</p>
+  </section>
+
+  <section class="seccion fade-in" style="padding-bottom:20px;">
+    <img class="corner-flor bl" src="rosasrosas.png" alt="">
+    <img class="mariposas-despedida" src="mariposas.gif" alt="">
+    <img class="silueta" src="quince.png" alt="">
+    <p class="despedida script">¡Te esperamos!</p>
+  </section>
+
+  <footer class="creditos">Invitación digital · con cariño para Jennifer</footer>
+</div>
+
+<svg width="0" height="0" style="position:absolute">
+<defs>
+
+  <g id="icon-corona">
+    <path d="M10 55 L15 20 L32 38 L50 12 L68 38 L85 20 L90 55 Z" fill="#B8873D" stroke="#8a641f" stroke-width="1.5" stroke-linejoin="round"/>
+    <rect x="8" y="55" width="84" height="10" rx="3" fill="#B8873D" stroke="#8a641f" stroke-width="1.5"/>
+    <circle cx="15" cy="20" r="4" fill="#fff3da"/>
+    <circle cx="50" cy="12" r="5" fill="#fff3da"/>
+    <circle cx="85" cy="20" r="4" fill="#fff3da"/>
+  </g>
+
+  <g id="rama-rosas">
+    <path d="M2 80 Q40 20 148 8" stroke="#B08D6A" stroke-width="2" fill="none"/>
+    <g fill="#D3A190" stroke="#B47B65" stroke-width="1">
+      <circle cx="20" cy="66" r="12"/>
+      <circle cx="46" cy="46" r="15"/>
+      <circle cx="78" cy="30" r="13"/>
+      <circle cx="110" cy="18" r="11"/>
+      <circle cx="136" cy="12" r="8"/>
+    </g>
+    <g fill="none" stroke="#9c8a54" stroke-width="1.4">
+      <path d="M30 70 q10 -14 24 -8"/>
+      <path d="M60 50 q10 -12 22 -6"/>
+      <path d="M92 32 q8 -10 18 -6"/>
+    </g>
+  </g>
+
+  <g id="icon-florecitas">
+    <g fill="#fff" opacity="0.9">
+      <circle cx="10" cy="8" r="2.4"/><circle cx="18" cy="4" r="2"/><circle cx="26" cy="10" r="2.6"/>
+      <circle cx="14" cy="16" r="2.2"/><circle cx="34" cy="6" r="1.8"/><circle cx="6" cy="18" r="1.8"/>
+      <circle cx="40" cy="14" r="2"/>
+    </g>
+    <g stroke="#c9d6b8" stroke-width="1" fill="none" opacity="0.7">
+      <path d="M10 8 L14 16"/><path d="M18 4 L14 16"/><path d="M26 10 L14 16"/>
+    </g>
+  </g>
+
+  <g id="icon-corazon-sello">
+    <path d="M12 20 C4 13 2 8 5 5 C8 2 12 3 12 7 C12 3 16 2 19 5 C22 8 20 13 12 20 Z"/>
+  </g>
+
+  <g id="circulo-brillos">
+    <circle cx="110" cy="110" r="100" fill="none" stroke="#D9B672" stroke-width="1.4" stroke-dasharray="1 7" stroke-linecap="round"/>
+    <circle cx="110" cy="10" r="3" fill="#D9B672"/>
+  </g>
+
+  <g id="silueta-vestido">
+    <ellipse cx="70" cy="20" rx="16" ry="18" fill="#D3A190"/>
+    <path d="M70 38 C55 40 46 46 42 56 C36 70 34 90 70 96 C106 90 104 70 98 56 C94 46 85 40 70 38 Z" fill="#E9C7BA"/>
+    <path d="M40 96 C20 110 14 150 20 200 C40 220 100 220 120 200 C126 150 120 110 100 96 C90 108 50 108 40 96 Z" fill="#E9C7BA"/>
+    <path d="M50 92 C60 104 80 104 90 92" stroke="#C98B7A" stroke-width="3" fill="none"/>
+  </g>
+
+  <g id="icon-copas">
+    <path d="M14 6 C14 16 20 18 20 24 L20 30 M20 30 L14 30 M20 30 L26 30" stroke="#B8873D" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M8 4 C8 12 14 14 14 20 M8 4 L20 4" stroke="#B8873D" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M46 6 C46 16 40 18 40 24 L40 30 M40 30 L34 30 M40 30 L46 30" stroke="#B8873D" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M52 4 C52 12 46 14 46 20 M40 4 L52 4" stroke="#B8873D" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <circle cx="20" cy="2" r="1.5" fill="#B8873D"/><circle cx="24" cy="0" r="1" fill="#B8873D"/>
+  </g>
+
+  <g id="icon-camisa">
+    <path d="M8 4 L4 8 L6 12 L8 10 L8 22 L16 22 L16 10 L18 12 L20 8 L16 4 L12 6 Z" fill="currentColor"/>
+    <path d="M12 6 L11 9 L12 12 L13 9 Z" fill="#8C5347"/>
+  </g>
+
+  <g id="icon-vestido">
+    <path d="M12 2 L9 6 L11 8 L10 12 L8 22 L16 22 L14 12 L13 8 L15 6 Z" fill="currentColor"/>
+  </g>
+
+  <g id="icon-sobres">
+    <rect x="20" y="14" width="46" height="32" rx="3" fill="none" stroke="#B8873D" stroke-width="2"/>
+    <path d="M20 16 L43 34 L66 16" fill="none" stroke="#B8873D" stroke-width="2"/>
+    <path d="M46 24 l-2 -2 l2 -2 l2 2 Z M46 24 l2 2 l-2 2 l-2 -2 Z" fill="#B8873D" transform="translate(0,0)"/>
+    <rect x="2" y="0" width="46" height="32" rx="3" fill="none" stroke="#D3A190" stroke-width="2"/>
+  </g>
+
+</defs>
+</svg>
+
+<script>
+const EVENTO = {
+  nombre: "Jennifer Aracely Pérez Ek",
+  papa: "Julio Cesar Pérez Mendez",
+  mama: "Angélica Brisana Ek Flores",
+  mes: "AGOSTO",
+  diaSemana: "SÁBADO",
+  diaNum: "22",
+  anio: "2026",
+  hora: "7:00 pm",
+  lugar: "Región 102 manzana 68 lote 10 calle 28",
+  mapsUrl: "https://maps.app.goo.gl/ZCmGgqxEcptVPVej9",
+  fechaISO: "2026-08-22T19:00:00",
+  frase: "Con la bendición de Dios y el amor que mi familia me ha dado, me siento feliz de llegar a este momento de mi vida; el día que dejaré atrás mi infancia y comenzaré un nuevo viaje."
+};
+
+document.getElementById('nombre-hero-txt').textContent = EVENTO.nombre;
+document.getElementById('papaTxt').textContent = EVENTO.papa;
+document.getElementById('mamaTxt').textContent = EVENTO.mama;
+document.getElementById('nombrePlacaTxt').textContent = EVENTO.nombre;
+document.getElementById('mesTxt').textContent = EVENTO.mes;
+document.getElementById('diaSemanaTxt').textContent = EVENTO.diaSemana;
+document.getElementById('diaNumTxt').textContent = EVENTO.diaNum;
+document.getElementById('anioTxt').textContent = EVENTO.anio;
+document.getElementById('horaTxt').textContent = EVENTO.hora;
+document.getElementById('lugarTxt').textContent = EVENTO.lugar;
+document.getElementById('comoLlegarBtn').href = EVENTO.mapsUrl;
+document.getElementById('fraseTxt').textContent = EVENTO.frase;
+
+/* --- Cuenta regresiva --- */
+function actualizarCuenta(){
+  const objetivo = new Date(EVENTO.fechaISO).getTime();
+  const ahora = new Date().getTime();
+  const diff = objetivo - ahora;
+
+  if(diff <= 0){
+    document.getElementById('cuentaRegresiva').innerHTML = '<p style="font-style:italic;">¡Hoy es el gran día!</p>';
+    clearInterval(intervaloCuenta);
+    return;
+  }
+
+  const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const min = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seg = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById('crDias').textContent = String(dias).padStart(2, '0');
+  document.getElementById('crHoras').textContent = String(horas).padStart(2, '0');
+  document.getElementById('crMin').textContent = String(min).padStart(2, '0');
+  document.getElementById('crSeg').textContent = String(seg).padStart(2, '0');
+}
+actualizarCuenta();
+const intervaloCuenta = setInterval(actualizarCuenta, 1000);
+
+/* --- Reproductor de música --- */
+const audio = document.getElementById('cancion');
+const playBtn = document.getElementById('playBtn');
+const iconPlay = document.getElementById('iconPlay');
+
+function iniciarMusica(){
+  if(audio.paused){
+    audio.play().catch(()=>{ /* si el navegador la bloquea, el usuario puede tocar el botón de play */ });
+    iconPlay.innerHTML = '<rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/>';
+  }
+}
+
+playBtn.addEventListener('click', ()=>{
+  if(audio.paused){
+    audio.play().catch(()=>alert('No se pudo reproducir. Revisa que "musica.mp3" esté en la misma carpeta que este HTML.'));
+    iconPlay.innerHTML = '<rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/>';
+  } else {
+    audio.pause();
+    iconPlay.innerHTML = '<path d="M8 5v14l11-7z"/>';
+  }
+});
+
+/* --- Apertura del sobre --- */
+const wrap = document.getElementById('envelopeWrap');
+const envScreen = document.getElementById('envelope-screen');
+const invitacion = document.getElementById('invitacion');
+let opened = false;
+
+function abrirSobre(){
+  if(opened) return;
+  opened = true;
+  wrap.classList.add('opening');
+  iniciarMusica(); /* la música arranca en el mismo clic que abre el sobre */
+  setTimeout(()=>{
+    envScreen.classList.add('hidden');
+    invitacion.classList.add('show');
+    document.body.style.overflowY = 'auto';
+    window.scrollTo(0,0);
+    observeSections();
+  }, 900);
+}
+wrap.addEventListener('click', abrirSobre);
+wrap.addEventListener('keypress', (e)=>{ if(e.key==='Enter' || e.key===' ') abrirSobre(); });
+
+document.body.style.overflowY = 'hidden';
+
+function observeSections(){
+  const els = document.querySelectorAll('.fade-in');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('in-view'); });
+  }, {threshold:0.15});
+  els.forEach(el=>io.observe(el));
+}
+</script>
+</body>
+</html>
