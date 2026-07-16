@@ -165,7 +165,7 @@
   }
   .silueta{width:150px; margin:6px auto -10px;}
   .mariposas-despedida{
-    position:absolute; top:18%; left:10%; width:85px; z-index:1; pointer-events:none;
+    position:absolute; top:18%; right:10%; width:85px; z-index:1; pointer-events:none;
   }
 
   .frase{font-size:1.18rem; line-height:1.55; font-style:italic; color:var(--clr-wine-soft); max-width:340px; margin:18px auto 0;}
@@ -238,6 +238,7 @@
   .btn-llegar:active{transform:scale(0.96);}
 
   .vest-icons{display:flex; justify-content:center; gap:34px; margin-top:20px;}
+  .formal-img{display:block; margin:20px auto 0; max-width:100px; width:100%; height:auto;}
   .vest-icons .icon-box{
     width:64px; height:64px; border-radius:14px; background:var(--clr-wine-soft);
     display:flex; align-items:center; justify-content:center;
@@ -372,7 +373,7 @@
     </div>
 
     <div class="arco" style="margin-top:40px;">
-      <svg class="copas" viewBox="0 0 60 60" fill="none"><use href="#icon-copas"/></svg>
+      <img class="copas" src="copas.png" alt="">
       <h3 class="script recep-h">Recepción</h3>
       <p class="recep-hora">Horario: <strong id="horaTxt">7:00 pm</strong></p>
       <p class="recep-hora" id="lugarTxt" style="font-size:0.95rem; color:var(--clr-blush-dark);">Región 102 manzana 68 lote 10 calle 28</p>
@@ -383,10 +384,7 @@
   <section class="seccion fade-in">
     <img class="corner-flor tr" style="width:120px;" src="rosas.webp" alt="">
     <h3 class="script" style="font-size:1.8rem; color:var(--clr-gold);">Vestimenta</h3>
-    <div class="vest-icons">
-      <div class="icon-box"><svg viewBox="0 0 24 24"><use href="#icon-camisa"/></svg></div>
-      <div class="icon-box"><svg viewBox="0 0 24 24"><use href="#icon-vestido"/></svg></div>
-    </div>
+    <img class="formal-img" src="formal.png" alt="">
     <p class="vest-label caps">Formal</p>
     <p class="vest-label caps">Se reserva el color rosa para la quinceañera</p>
   </section>
